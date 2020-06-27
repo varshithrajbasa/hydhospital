@@ -90,6 +90,7 @@
 
 .banner-text h2 {
     color: #DE6262;
+    text-shadow: 2px 2px 4px #fff;
     font-weight: 600;
 }
 
@@ -98,6 +99,7 @@
     width: 100px;
     height: 5px;
     background: #DE6262;
+    text-shadow: 2px 2px 4px #fff;
     display: block;
     margin-top: 20px;
     border-radius: 3px;
@@ -105,4 +107,5 @@
 
 .banner-text p {
     color: #DE6262;
+    text-shadow: 2px 2px 4px #fff;
 }

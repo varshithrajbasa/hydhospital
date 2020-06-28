@@ -28,6 +28,18 @@ def login():
 def home():
         return render_template("hms.html")
 
-@app.route("/create_patient")
+@app.route("/create_patient",methods=['post','get'])
 def create_patient():
+    if request.method == 'POST':
+        ssn_id = int(request.form.get('ssn_id')) 
+        patient_name = request.form.get('patient_name')
+        patient_age=int(request.form.get('age'))
+        patient_admission_date=request.form.get('admission_date')
+        patient_bed=request.form.get('bed_type')
+        patient_address=request.form.get('address')
+        patient_state=request.form.get('state')
+        patient_city=request.form.get('city')
+        cur = mysql.connection.cursor()
+        cur.execute('''insert into patients(patient_ssn_id,patient_name,age,date_of_admission,type_of_bed,address,city,state,status) values (%s,%s,%s,%s,%s,%s,%s,%s,%s)''', (ssn_id,patient_name,patient_age,patient_admission_date,patient_bed,patient_city,patient_state,patient_city,"active"))
+        mysql.connection.commit()
     return render_template("create_patient.html")

@@ -9,7 +9,7 @@ app.config['MYSQL_PASSWORD'] = 'tiger'
 app.config['MYSQL_DB'] = 'hospital_management_system'
 mysql = MySQL(app)
 
-@app.route("/")
+@app.route("/", methods=['post', 'get'])
 def login():
 <<<<<<< HEAD
     return render_template("create_patient.html")

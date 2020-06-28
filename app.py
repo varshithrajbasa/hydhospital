@@ -11,9 +11,6 @@ mysql = MySQL(app)
 
 @app.route("/", methods=['post', 'get'])
 def login():
-<<<<<<< HEAD
-    return render_template("create_patient.html")
-=======
     if request.method == 'POST':
         username = request.form.get('username')  # access the data inside 
         password = request.form.get('password')
@@ -30,4 +27,7 @@ def login():
 @app.route("/home")
 def home():
         return render_template("hms.html")
->>>>>>> aa27f32dda7658510c027088bedaf29b0edf3409
+
+@app.route("/create_patient")
+def create_patient():
+    return render_template("create_patient.html")

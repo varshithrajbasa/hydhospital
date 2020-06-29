@@ -1,0 +1,13 @@
+show databases;
+create database hospital_management_system;
+use hospital_management_system;
+
+///DB table to retrive login details
+create table userstore(login_id varchar(20) not null,password varchar(20) not null,created_time timestamp default current_timestamp,last_view timestamp default current_timestamp on update current_timestamp);
+///Insert values into userstore table
+
+insert into userstore(login,password) values('John1996','John@123$');
+insert into userstore(login,password) values('Jack1998','Jack@123$');
+////patients table  reation in hospital_management_system database
+
+create table patients(patient_ssn_id int(10) unique  not null,patient_id int auto_increment primary key,patient_name varchar(20),age int(2),date_of_admission datetime,type_of_bed varchar(20),address varchar(50),city varchar(15),state varchar(15),status varchar(15));

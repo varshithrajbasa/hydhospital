@@ -15,7 +15,7 @@
             $(function() {
                 $('a#get_val').bind('click', function() {
                     $.getJSON('/background_process', {
-                        get_val: $('input[name="get_val"]').val(),
+                        patient_id: $('input[name="patient_id"]').val(),
                     }, function(data) {
                         $("#result").text(data.result);
                     });

@@ -73,13 +73,13 @@ def search_patient():
 
 @app.route("/background_process",methods=['post','get'])
 def background_process():
-    valu = request.args.get('get_val', 0, type=int)
-    print(valu)
-    return jsonify(valu)
-    # cur = mysql.connection.cursor()
-    # stored_val=cur.execute('''select * from patients where patient_ssn_id=%s''',(lang))
-    # mysql.connection.commit()
-    # print(stored_val)
+    get_value = request.args.get('patient_id', 0, type=int)
+    cur = mysql.connection.cursor()
+    cur.execute('''SELECT * from patients WHERE patient_id=%s''',(get_value))
+    mysql.connection.commit()
+    print(stored_val)
+    return jsonify(get_value)
+
 @app.route("/view_all_patients")
 def view_all_patients():
     cur = mysql.connection.cursor()

@@ -43,3 +43,26 @@ def create_patient():
         cur.execute('''insert into patients(patient_ssn_id,patient_name,age,date_of_admission,type_of_bed,address,city,state,status) values (%s,%s,%s,%s,%s,%s,%s,%s,%s)''', (ssn_id,patient_name,patient_age,patient_admission_date,patient_bed,patient_address,patient_state,patient_city,"active"))
         mysql.connection.commit()
     return render_template("create_patient.html")
+@app.route("/update_patient",methods=['post','get'])
+def update_patient():
+    if request.method == 'POST':
+        patient_id = int(request.form.get('patient_id'))  # access the data inside 
+        patient_name = request.form.get('patient_name')
+        patient_age=int(request.form.get('age'))
+        patient_admission_date=request.form.get('admission_date')
+        patient_bed=(request.form.get('bed_type'))
+        patient_address=request.form.get('address')
+        patient_state=request.form.get('state')
+        patient_city=request.form.get('city')
+        cur = mysql.connection.cursor()
+        cur.execute('''UPDATE  patients SET patient_name=%s,age=%s,date_of_admission=%s,type_of_bed=%s,address=%s,state=%s,city=%s WHERE patient_id=%s''', (patient_name,patient_age,patient_admission_date,patient_bed,patient_address,patient_state,patient_city,patient_id))
+        mysql.connection.commit()
+    return render_template("update_patient.html")
+@app.route("/delete_patient",methods=['post','get'])
+def delete_patient():
+    if request.method == 'POST':
+        patient_id = (request.form.get('patient_id')) 
+        cur = mysql.connection.cursor()
+        cur.execute('''DELETE from patients  WHERE patient_id=%s''', (patient_id))
+        mysql.connection.commit()
+    return render_template("delete_patient.html")

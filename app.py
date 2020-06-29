@@ -77,7 +77,7 @@ def search_patient():
 def background_process():
     get_value = request.args.get('patient_id', 0, type=int)
     cur = mysql.connection.cursor()
-    cur.execute('''SELECT patient_ssn_id,patient_name,age,type_of_bed,address,city,state,status from patients WHERE patient_ssn_id=%s''',(get_value,))
+    cur.execute('''SELECT patient_ssn_id,patient_name,age,type_of_bed,address,city,state,status from patients WHERE patient_id=%s''',(get_value,))
     row_headers=[x[0] for x in cur.description]
     rv = cur.fetchall()
     json_data=[]

@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect, request, url_for, session
+from flask import Flask, request, render_template, redirect, request, url_for, session, jsonify
 from flask_mysqldb import MySQL 
 
 app = Flask(__name__)
@@ -66,3 +66,16 @@ def delete_patient():
         cur.execute('''DELETE from patients  WHERE patient_id=%s''', (patient_id))
         mysql.connection.commit()
     return render_template("delete_patient.html")
+
+@app.route("/search_patient",methods=['post','get'])
+def search_patient():
+    return render_template("search_patient.html")
+
+@app.route('/background_process')
+def background_process():
+    lang = request.args.get('proglang', 0, type=int)
+    print(lang)
+    cur = mysql.connection.cursor()
+    stored_val=cur.execute('''select * from patients where patient_ssn_id=%s''',(lang))
+    mysql.connection.commit()
+    print(stored_val)

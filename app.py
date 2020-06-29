@@ -1,5 +1,7 @@
 from flask import Flask, request, render_template, redirect, request, url_for, session, jsonify
 from flask_mysqldb import MySQL 
+import json
+import datetime
 
 app = Flask(__name__)
 app.secret_key = "S689Gjysjms0"
@@ -74,12 +76,16 @@ def search_patient():
 @app.route("/background_process",methods=['post','get'])
 def background_process():
     get_value = request.args.get('patient_id', 0, type=int)
-    print(get_value)
     cur = mysql.connection.cursor()
-    cur.execute('''SELECT * from patients WHERE patient_ssn_id=%s''',(get_value))
-    mysql.connection.commit()
-    # print(stored_val)
-    return jsonify(get_value)
+    cur.execute('''SELECT * from patients WHERE patient_ssn_id=%s''',(get_value,))
+    row_headers=[x[0] for x in cur.description]
+    rv = cur.fetchall()
+    json_data=[]
+    for result in rv:
+        json_data.append(dict(zip(row_headers,result)))
+    return json.dumps(json_data)
+    # stored_val=cur.fetchall()
+    # return jsonify(stored_val)
 
 @app.route("/view_all_patients")
 def view_all_patients():

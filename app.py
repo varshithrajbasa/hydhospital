@@ -74,6 +74,7 @@ def search_patient():
 @app.route("/background_process",methods=['post','get'])
 def background_process():
     get_value = request.args.get('patient_id', 0, type=int)
+    print(get_value)
     cur = mysql.connection.cursor()
     cur.execute('''SELECT * from patients WHERE patient_ssn_id=%s''',(get_value))
     mysql.connection.commit()

@@ -75,9 +75,9 @@ def search_patient():
 def background_process():
     get_value = request.args.get('patient_id', 0, type=int)
     cur = mysql.connection.cursor()
-    cur.execute('''SELECT * from patients WHERE patient_id=%s''',(get_value))
+    cur.execute('''SELECT * from patients WHERE patient_ssn_id=%s''',(get_value))
     mysql.connection.commit()
-    print(stored_val)
+    # print(stored_val)
     return jsonify(get_value)
 
 @app.route("/view_all_patients")

@@ -71,11 +71,12 @@ def delete_patient():
 def search_patient():
     return render_template("search_patient.html")
 
-@app.route('/background_process')
+@app.route("/background_process",methods=['post','get'])
 def background_process():
-    lang = request.args.get('proglang', 0, type=int)
-    print(lang)
-    cur = mysql.connection.cursor()
-    stored_val=cur.execute('''select * from patients where patient_ssn_id=%s''',(lang))
-    mysql.connection.commit()
-    print(stored_val)
+    valu = request.args.get('get_val', 0, type=int)
+    print(valu)
+    return jsonify(valu)
+    # cur = mysql.connection.cursor()
+    # stored_val=cur.execute('''select * from patients where patient_ssn_id=%s''',(lang))
+    # mysql.connection.commit()
+    # print(stored_val)

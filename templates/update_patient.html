@@ -15,7 +15,7 @@
             $(function() {
                 $('a#get_val').bind('click', function() {
                     $.getJSON('/background_process', {
-                        proglang: $('input[name="get_val"]').val(),
+                        get_val: $('input[name="get_val"]').val(),
                     }, function(data) {
                         $("#result").text(data.result);
                     });

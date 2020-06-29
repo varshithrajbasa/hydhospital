@@ -77,15 +77,13 @@ def search_patient():
 def background_process():
     get_value = request.args.get('patient_id', 0, type=int)
     cur = mysql.connection.cursor()
-    cur.execute('''SELECT * from patients WHERE patient_ssn_id=%s''',(get_value,))
+    cur.execute('''SELECT patient_ssn_id,patient_name,age,type_of_bed,address,city,state,status from patients WHERE patient_ssn_id=%s''',(get_value,))
     row_headers=[x[0] for x in cur.description]
     rv = cur.fetchall()
     json_data=[]
     for result in rv:
         json_data.append(dict(zip(row_headers,result)))
     return json.dumps(json_data)
-    # stored_val=cur.fetchall()
-    # return jsonify(stored_val)
 
 @app.route("/view_all_patients")
 def view_all_patients():

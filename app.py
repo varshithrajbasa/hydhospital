@@ -80,3 +80,9 @@ def background_process():
     # stored_val=cur.execute('''select * from patients where patient_ssn_id=%s''',(lang))
     # mysql.connection.commit()
     # print(stored_val)
+@app.route("/view_all_patients")
+def view_all_patients():
+    cur = mysql.connection.cursor()
+    cur.execute("select patient_id,patient_name,age,address,date_of_admission,type_of_bed from patients")
+    data = cur.fetchall() 
+    return render_template("view_all_patients.html", value=data)

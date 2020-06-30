@@ -22,8 +22,8 @@
                         $("#bed_type").val(data[0]['type_of_bed']);
                         $("#listBox").val(data[0]['state']);
                         $("#secondlist").val(data[0]['city']);
-
-                        console.log(data);
+                        var date = data[0]['date_of_admission'].substring(0, 10);
+                        $("#date_of_admission").val(date)
                     });
                     return false;
                 });

@@ -12,6 +12,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script type=text/javascript>
             $(function() {
+                $('#bed_type').attr("disabled", true);
                 $('a#get_val').bind('click', function() {
                     $.getJSON('/background_process', {
                         patient_id: $('input[name="patient_id"]').val(),
@@ -22,8 +23,8 @@
                         $("#bed_type").val(data[0]['type_of_bed']);
                         $("#listBox").val(data[0]['state']);
                         $("#secondlist").val(data[0]['city']);
-
-                        console.log(data);
+                        var date = data[0]['date_of_admission'].substring(0, 10);
+                        $("#date_of_admission").val(date)
                     });
                     return false;
                 });
@@ -40,25 +41,25 @@
         <div class="form-group row justify-content-md-center">
             <label for="input" class="col-sm-2 col-form-label">Patient Name</label>
             <div class="col-sm-3">
-                <input type="text" class="form-control" id="patient_name" name="patient_name" placeholder="">
+                <input type="text" class="form-control" id="patient_name" name="patient_name" placeholder="" readonly>
             </div>
         </div>
         <div class="form-group row justify-content-md-center">
             <label for="input" class="col-sm-2 col-form-label">Patient Age</label>
             <div class="col-sm-3">
-                <input type="number" class="form-control" id="patient_age" name="age" placeholder="">
+                <input type="number" class="form-control" id="patient_age" name="age" placeholder="" readonly>
             </div>
         </div>
         <div class="form-group row justify-content-md-center">
             <label for="input" class="col-sm-2 col-form-label">Date Of Admission</label>
             <div class="col-sm-3">
-                <input type="date" class="form-control" id="date_of_admission" name="admission_date" placeholder="">
+                <input type="date" class="form-control" id="date_of_admission" name="admission_date" placeholder="" readonly>
             </div>
         </div>
         <div class="form-group row justify-content-md-center">
             <label for="input" class="col-sm-2 col-form-label">Type of bed</label>
             <div class="col-sm-3">
-                <select type="text" class="form-control" id="bed_type" name="bed_type" placeholder="">
+                <select type="text" class="form-control" id="bed_type" name="bed_type" placeholder="" readonly>
                     <option value="general-ward">General Ward</option>
                     <option value="semi-sharing">Semi Sharing</option>
                     <option value="single-room">Single Room</option>
@@ -68,25 +69,19 @@
         <div class="form-group row justify-content-md-center">
             <label for="input" class="col-sm-2 col-form-label">Address</label>
             <div class="col-sm-3">
-                <input type="text" class="form-control" id="address" name="address" placeholder="">
+                <input type="text" class="form-control" id="address" name="address" placeholder="" readonly>
             </div>
         </div>
         <div class="form-group row justify-content-md-center">
             <label for="input" class="col-sm-2 col-form-label">State*</label>
             <div class="col-sm-3">
-                <input type="text" class="form-control" id="listBox" name="state" placeholder="">
+                <input type="text" class="form-control" id="listBox" name="state" placeholder="" readonly>
             </div>
         </div>
         <div class="form-group row justify-content-md-center">
             <label for="input" class="col-sm-2 col-form-label">City*</label>
             <div class="col-sm-3">
-                <input type="text" class="form-control" id="secondlist" name="city" placeholder="">
-            </div>
-        </div>
-        <br>
-        <div class="form-group row justify-content-md-center">
-            <div class="col-1">
-                <button type="submit" class="btn btn-primary">Search</button>
+                <input type="text" class="form-control" id="secondlist" name="city" placeholder="" readonly>
             </div>
         </div>
     </form>

@@ -10,44 +10,64 @@
     <script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
     <script language="Javascript" src="{{ url_for('static',filename='jquery.js') }}"></script>
     <script type="text/JavaScript" src="{{ url_for('static',filename='state.js') }}"></script>
-
+    <script language="Javascript" src="{{ url_for('static',filename='jquery.min.js') }}"></script>
+    <script type=text/javascript>
+        $(function() {
+            $('a#get_val').bind('click', function() {
+                $.getJSON('/background_process', {
+                    patient_id: $('input[name="patient_id"]').val(),
+                }, function(data) {
+                    $("#address").val(data[0]['address']);
+                    $("#patient_age").val(data[0]['age']);
+                    $("#patient_name").val(data[0]['patient_name']);
+                    $("#bed_type").val(data[0]['type_of_bed']);
+                    $("#listBox").val(data[0]['state']);
+                    $("#secondlist").val(data[0]['city']);
+                    var date = data[0]['date_of_admission'].substring(0, 10);
+                    $("#date_of_admission").val(date)
+                    console.log("button clicked");
+                });
+                return false;
+            });
+        });
+    </script>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg">
-        <a class="navbar-brand" href="{{ url_for('home')}}">ABC Hospital Management System</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+    <nav class=" navbar navbar-expand-lg ">
+        <a class="navbar-brand " href="{{ url_for( 'home')}} ">ABC Hospital Management System</a>
+        <button class="navbar-toggler " type="button " data-toggle="collapse " data-target="#navbarNavDropdown " aria-controls="navbarNavDropdown " aria-expanded="false " aria-label="Toggle navigation ">
+          <span class="navbar-toggler-icon "></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="collapse navbar-collapse " id="navbarNavDropdown ">
+            <ul class="navbar-nav ">
+                <li class="nav-item dropdown ">
+                    <a class="nav-link dropdown-toggle " href="# " id="navbarDropdownMenuLink " role="button " data-toggle="dropdown " aria-haspopup="true " aria-expanded="false ">
                 Patient
               </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="{{ url_for('create_patient')}}">Create Patient</a>
-                        <a class="dropdown-item" href="{{ url_for('update_patient')}}">Update Patient</a>
-                        <a class="dropdown-item" href="{{ url_for('delete_patient')}}">Delete Patient</a>
-                        <a class="dropdown-item" href="{{ url_for('view_all_patients')}}">View All Patients</a>
-                        <a class="dropdown-item" href="{{ url_for('search_patient')}}">Search Patient</a>
+                    <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink ">
+                        <a class="dropdown-item " href="{{ url_for( 'create_patient')}} ">Create Patient</a>
+                        <a class="dropdown-item " href="{{ url_for( 'update_patient')}} ">Update Patient</a>
+                        <a class="dropdown-item " href="{{ url_for( 'delete_patient')}} ">Delete Patient</a>
+                        <a class="dropdown-item " href="{{ url_for( 'view_all_patients')}} ">View All Patients</a>
+                        <a class="dropdown-item " href="{{ url_for( 'search_patient')}} ">Search Patient</a>
                     </div>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <li class="nav-item dropdown ">
+                    <a class="nav-link dropdown-toggle " href="# " id="navbarDropdownMenuLink " role="button " data-toggle="dropdown " aria-haspopup="true " aria-expanded="false ">
                 Pharmacy
               </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Issue medicines</a>
+                    <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink ">
+                        <a class="dropdown-item " href="# ">Issue medicines</a>
                     </div>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <li class="nav-item dropdown ">
+                    <a class="nav-link dropdown-toggle " href="# " id="navbarDropdownMenuLink " role="button " data-toggle="dropdown " aria-haspopup="true " aria-expanded="false ">
                 Diagnostics
               </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Add Diagnostic</a>
-                        <a class="dropdown-item" href="#">Final Billing</a>
+                    <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink ">
+                        <a class="dropdown-item " href="# ">Add Diagnostic</a>
+                        <a class="dropdown-item " href="# ">Final Billing</a>
                     </div>
                 </li>
             </ul>

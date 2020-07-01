@@ -9,26 +9,6 @@
                 <input type="number" class="form-control" id="patient_id" name="patient_id" placeholder="">
             </div>
         </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script type=text/javascript>
-            $(function() {
-                $('a#get_val').bind('click', function() {
-                    $.getJSON('/background_process', {
-                        patient_id: $('input[name="patient_id"]').val(),
-                    }, function(data) {
-                        $("#address").val(data[0]['address']);
-                        $("#patient_age").val(data[0]['age']);
-                        $("#patient_name").val(data[0]['patient_name']);
-                        $("#bed_type").val(data[0]['type_of_bed']);
-                        $("#listBox").val(data[0]['state']);
-                        $("#secondlist").val(data[0]['city']);
-                        var date = data[0]['date_of_admission'].substring(0, 10);
-                        $("#date_of_admission").val(date)
-                    });
-                    return false;
-                });
-            });
-        </script>
         <div class="form-group row  justify-content-md-center">
             <label for="error_msg" class="col-sm-2 col-form-label">
                 

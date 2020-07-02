@@ -31,6 +31,8 @@ def home():
 
 @app.route("/create_patient",methods=['post','get'])
 def create_patient():
+    if session=={}:
+       return redirect(url_for('login'))
     if request.method == 'POST':
         ssn_id = int(request.form.get('ssn_id')) 
         patient_name = request.form.get('patient_name')
@@ -46,6 +48,8 @@ def create_patient():
     return render_template("create_patient.html")
 @app.route("/update_patient",methods=['post','get'])
 def update_patient():
+    if session=={}:
+       return redirect(url_for('login'))
     if request.method == 'POST':
         patient_id = int(request.form.get('patient_id'))  # access the data inside 
         patient_name = request.form.get('patient_name')
@@ -61,6 +65,8 @@ def update_patient():
     return render_template("update_patient.html")
 @app.route("/delete_patient",methods=['post','get'])
 def delete_patient():
+    if session=={}:
+       return redirect(url_for('login'))
     if request.method == 'POST':
         patient_id = (request.form.get('patient_id')) 
         cur = mysql.connection.cursor()
@@ -70,6 +76,8 @@ def delete_patient():
 
 @app.route("/search_patient",methods=['post','get'])
 def search_patient():
+    if session=={}:
+       return redirect(url_for('login'))
     return render_template("search_patient.html")
 
 @app.route("/background_process",methods=['post','get'])
@@ -86,7 +94,33 @@ def background_process():
 
 @app.route("/view_all_patients")
 def view_all_patients():
+    if session=={}:
+       return redirect(url_for('login'))
     cur = mysql.connection.cursor()
     cur.execute("select patient_id,patient_name,age,address,date_of_admission,type_of_bed from patients")
     data = cur.fetchall() 
     return render_template("view_all_patients.html", value=data)
+@app.route("/issue_medicines")
+def issue_medicines():
+    if session=={}:
+       return redirect(url_for('login'))
+    return render_template("issue_medicines.html")
+@app.route("/add_diagnostics")
+def add_diagnostics():
+    if session=={}:
+       return redirect(url_for('login'))
+    return render_template("add_diagnostics.html")
+@app.route("/final_billing")
+def final_billing():
+    if session=={}:
+       return redirect(url_for('login'))
+    return render_template("final_billing.html")
+@app.route("/logout")
+def logut():
+    if session=={}:
+       return redirect(url_for('login'))
+    session.clear()
+    return redirect(url_for('login'))
+    
+if __name__ =='__main__':
+    app.run(debug=True)

@@ -1,0 +1,103 @@
+{% extends "header/header.html" %} {% block content %}
+
+<div>
+    <h3 class="page_head">Patient Billing</h3>
+
+    <table class="table table-bordered">
+        <thead class="table-danger">
+            <tr>
+                <th scope="col">Patient Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Age</th>
+                <th scope="col">Address</th>
+                <th scope="col">DOJ</th>
+                <th scope="col">Type of Room</th>
+            </tr>
+        </thead>
+        <tbody class="table-light">
+            <tr>
+                <td>
+                    <div style="display: flex">
+                        <input style="border: none;border-color: transparent;" type="number" id="patient_id" name="patient_id" placeholder="Enter ID">
+                        <a id="get_val" href="#"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+                    <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+                  </svg></a></div>
+                </td>
+                <td> <input style="border: none;border-color: transparent;" id="patient_name" readonly></td>
+                <td><input style="border: none;border-color: transparent;" id="patient_age" readonly></td>
+                <td><input style="border: none;border-color: transparent;" id="address" readonly></td>
+                <td><input style="border: none;border-color: transparent;" id="date_of_admission" readonly></td>
+                <td><input style="border: none;border-color: transparent;" id="bed_type2" readonly></td>
+            </tr>
+        </tbody>
+    </table>
+    <div style="display: flex;flex-direction: row-reverse;">
+        <div class="text-out-box">
+            <h6 style="font-weight: 550">No of days</h6>
+            <p>hi</p>
+            <h6 style="font-weight: 550">Bill for Room</h6>
+            <p>hello</p>
+        </div>
+    </div>
+    <h3 class="page_head">Pharmacy Charges</h3>
+
+    <table class="table table-bordered" style="margin: 0 auto; width: 40%;">
+        <thead class="table-danger">
+            <tr>
+                <th scope="col">Medicine</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Rate</th>
+                <th scope="col">Amount</th>
+            </tr>
+        </thead>
+        <tbody class="table-light">
+            <tr>
+                <td>1</td>
+                <td>Mark</td>
+                <td>data</td>
+                <td>data</td>
+            </tr>
+        </tbody>
+    </table>
+    <div style="display: flex; justify-content: center; align-items: first baseline;">
+        <div class="text-out-box">
+            <h6 style="font-weight: 550; margin-top: 8px;">Bill for Pharmacy</h6>
+            <p class="remark">hi</p>
+        </div>
+    </div>
+    <br>
+    <h3 class="page_head">Diagnostics Charges</h3>
+    <br>
+    <table class="table table-bordered" style="margin: 0 auto; width: 40%;">
+        <thead class="table-danger">
+            <tr>
+                <th scope="col">Name of Test</th>
+                <th scope="col">Amount</th>
+            </tr>
+        </thead>
+        <tbody class="table-light">
+            <tr>
+                <td>1</td>
+                <td>Mark</td>
+            </tr>
+        </tbody>
+    </table>
+    <div style="display: flex; justify-content: center;align-items: first baseline;">
+        <div class="text-out-box">
+            <h6 style="font-weight: 550; margin-top: 8px;">Bill for Diagnostics</h6>
+            <p class="remark">hi</p>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="text-center" style="display: flex; align-items: first baseline; justify-content: space-around; width: 25%; margin: 0 auto; ">
+        <button type="submit" class="btn btn-primary text-center">Confirm</button>
+        <h6 style="font-weight: 550; margin-top: 8px;">Grant Total</h6>
+        <p class="remark">total bill</p>
+
+    </div>
+
+</div>
+
+{% endblock %}

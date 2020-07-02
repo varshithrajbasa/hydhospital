@@ -1,7 +1,7 @@
 body {
-    background: linear-gradient(to bottom, #FFB860, #DE6262);
+    background: linear-gradient(to bottom, #FFB860, #DE6222);
     padding: 1rem;
-    min-height: 800px;
+    min-height: 100vh;
 }
 
 .dropdown:hover>.dropdown-menu {
@@ -38,12 +38,6 @@ body {
     font-weight: 600;
 }
 
-
-/* 
-.create_patient {
-    width: 400px;
-} */
-
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -52,4 +46,15 @@ input::-webkit-inner-spin-button {
 
 input[type=number] {
     -moz-appearance: textfield;
+}
+
+.text-out-box {
+    display: flex;
+    justify-content: space-around;
+    align-items: first baseline;
+    width: 30%;
+}
+
+.remark {
+    margin-top: 8px !important;
 }

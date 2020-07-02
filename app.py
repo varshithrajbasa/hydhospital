@@ -27,7 +27,9 @@ def login():
 
 @app.route("/home")
 def home():
-        return render_template("hms.html")
+    if session=={}:
+       return redirect(url_for('login'))
+    return render_template("hms.html")
 
 @app.route("/create_patient",methods=['post','get'])
 def create_patient():
